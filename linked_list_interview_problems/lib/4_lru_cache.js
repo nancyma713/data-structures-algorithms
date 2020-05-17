@@ -58,41 +58,65 @@
 // TODO: Implement the LRUCacheItem class here
 class LRUCacheItem {
   constructor(val = null, key = null) {
-
+    this.val = val;
+    this.key = key;
+    this.node = null;
   }
 }
 
 // TODO: Implement the LRUCacheItem class here
 class LRUCache {
   constructor(limit) {
+    this.items = {};
 
+    this.order = new List();
+    this.limit = limit;
+    this.length = 0;
   }
 
   // TODO: Implement the size method here
   size() {
-
+    return this.length;
   }
 
   // TODO: Implement the get method here
   get(key) {
+    if (!(this.items[key])) return null;
 
+    const item = this.items[key];
+    this.promote(item);
+    return item.val;
   }
 
   // TODO: Implement the set method here
   set(key, val) {
+    let item;
 
+    if (this.items[key]) {
+      item = this.items[key];
+      item.val = val;
+      this.promote(item);
+    } else {
+      if (this.isFull()) this.prune();
+      item = new LRUCacheItem(val, key);
+      item.node = this.order.unshift(item);
+      this.items[key] = item;
+      this.length++;
+    }
   }
 
   isFull() {
-    
+    return this.length >= this.limit;
   }
 
   prune() {
-
+    const oldest = this.order.pop();
+    delete this.items[oldest.key];
+    this.length--;
   }
 
   promote(item) {
-
+    this.order.moveToFront(item.node);
   }
 }
 

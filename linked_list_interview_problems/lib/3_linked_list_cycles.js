@@ -61,7 +61,17 @@
 // -----------
 function hasCycle(linkedList) {
   // TODO: Implement the hasCycle function!
+  let first = linkedList.head;
+  let second = linkedList.head;
+  let stop = true;
 
+  while (first = first.next) {
+    if (first === second) return true;
+    second = stop ? second : second.next;
+    stop = !stop;
+  }
+
+  return false;
 }
 
 
