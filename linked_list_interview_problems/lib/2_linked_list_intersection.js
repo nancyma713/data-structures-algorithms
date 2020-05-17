@@ -41,7 +41,37 @@
 // -----------
 function linkedListIntersection(list1, list2) {
   // TODO: Implement the hasCycle function!
+  const list1Length = getLinkedListLength(list1.head);
+  const list2Length = getLinkedListLength(list2.head);
 
+  let difference = Math.abs(list1Length - list2Length);
+  let longer = list1Length >= list2Length ? list1.head : list2.head;
+  let shorter = list1Length >= list2Length ? list2.head : list1.head;
+
+  while (longer && shorter) {
+    if (difference > 0) {
+      longer = longer.next;
+      difference--;
+      continue;
+    }
+
+    if (longer === shorter) {
+      return longer;
+    }
+
+    longer = longer.next;
+    shorter = shorter.next;
+  }
+
+  return null;
+}
+
+function getLinkedListLength(listNode) {
+  if (listNode.next === null) {
+    return 1;
+  } else {
+    return getLinkedListLength(listNode.next) + 1;
+  }
 }
 
 // ----------------------------------------
