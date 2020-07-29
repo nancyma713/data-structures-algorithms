@@ -13,6 +13,6 @@ def plus_one(digits)
     digits
 end
 
-p plus_one([1,2,3]) #=> [1,2,4]
-p plus_one([4,3,2,1]) #=> [4,3,2,2]
-p plus_one([5,3,2,9]) #=> [5,3,3,0]
+p plus_one([1,2,3]) #=> [1, 2, 4]
+p plus_one([4,3,2,1]) #=> [4, 3, 2, 2]
+p plus_one([5,3,2,9]) #=> [5, 3, 3, 0]
