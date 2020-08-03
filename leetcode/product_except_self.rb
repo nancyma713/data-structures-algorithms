@@ -27,3 +27,4 @@ def product_except_self(nums)
 end
 
 p product_except_self([1,2,3,4]) #=> [24,12,8,6]
+p product_except_self([4,2,5,7]) #=> [70,140,56,40]
