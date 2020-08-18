@@ -11,10 +11,12 @@ def open_lock(deadends, target)
         return depth if node == target
         next if deadends.include?(node)
         neighbors = bfs(node) 
-        
+
         neighbors.each do |n|
-            seen[n] = true
-            queue << [n, depth + 1] unless deadends.include?(n)
+            if !seen[n]
+                seen[n] = true
+                queue << [n, depth + 1]
+            end
         end
     end
     -1
@@ -32,4 +34,5 @@ def bfs(node)
     neighbors
 end
 
-p open_lock()
+p open_lock(["8887","8889","8878","8898","8788","8988","7888","9888"], "8888") #=> -1
+p open_lock(["8888"], "0009") #=> 1
