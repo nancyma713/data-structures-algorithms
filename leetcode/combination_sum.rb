@@ -24,6 +24,3 @@ def dfs(res, curr, nums, target, i)
         curr.pop
     end
 end
-
-p combination_sum([10,1,2,7,6,1,5], 8) #=> [[1, 7], [1, 2, 5], [2, 6], [1, 1, 6]]
-p combination_sum([2,5,2,1,2], 5) #=> [[1, 2, 2], [5]]
