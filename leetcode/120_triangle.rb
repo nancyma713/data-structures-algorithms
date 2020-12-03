@@ -16,3 +16,20 @@ def minimum_total(triangle)
     end
     triangle.last.min
 end
+
+def minimum_total(triangle)
+    dp = Array.new(triangle.length + 1, 0)
+    
+    i = triangle.length - 1
+    
+    while i >= 0
+        j = 0
+        while j < triangle[i].length
+            dp[j] = [dp[j], dp[j + 1]].min + triangle[i][j]
+            j += 1
+        end
+        i -= 1
+    end
+    
+    dp[0]
+end
